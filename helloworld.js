@@ -7,7 +7,7 @@
 // };
 
 var app = new Vue({
-  el: "#app",
+  el: "#app-1",
   data: {
     message: "Hello Vue!",
   },
@@ -78,3 +78,112 @@ var data = { a: 1 };
 var vm = new Vue({
   data: data,
 });
+
+vm.b = "hi";
+
+var obj = {
+  foo: "bar",
+};
+
+// Object.freeze(obj)
+
+new Vue({
+  el: "#app",
+  data: obj,
+});
+
+new Vue({
+  el: ".js-component01",
+  data: {
+    text: "",
+  },
+});
+
+new Vue({
+  el: ".js-component02",
+  data: {
+    input: "",
+    text: "",
+  },
+  methods: {
+    output: function () {
+      this.text = this.input;
+    },
+  },
+});
+
+new Vue({
+  el: ".js-component03",
+  data: {
+    input: "",
+    html: "",
+  },
+  methods: {
+    hoge: function () {
+      this.html = '<span style="color: #fc0;">' + this.input + "</span>";
+    },
+  },
+});
+
+new Vue({
+  el: ".js-component04",
+  data: {
+    a: "",
+    momo: "",
+  },
+});
+
+new Vue({
+  el: ".js-component05",
+  data: {
+    text: "",
+  },
+  filters: {
+    toUpperCase: function (value) {
+      if (!value) return "";
+      value = value.toString();
+      return value.toUpperCase();
+    },
+  },
+});
+
+var app = new Vue({
+  el: "#number",
+  data: {
+    price: 29800,
+  },
+  filters: {
+    numberFormat: (value) => {
+      return value.toLocaleString();
+    },
+  },
+});
+
+new Vue({
+  el: '.js-component06',
+  data: {
+    number: '0'
+  },
+  computed: {
+    calc3Times: function() {
+      return this.number * 3;
+    }
+  }
+})
+
+new Vue({
+  el: '.js-component07',
+  data: {
+    origin: '100'
+  },
+  computed: {
+    withTax: {
+      get: function () {
+        return parseInt(this.origin * 1.08)
+      },
+      set: function (value) {
+        this.origin = Math.ceil(value / 1.08);
+      } 
+    }
+  }
+})
