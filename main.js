@@ -11,3 +11,12 @@ var app = new Vue({
     }
   }
 })
+
+new Vue({
+  el: '#app1',
+  computed: {
+    computedMessage: function(){
+      return this.message + '!'
+    }
+  }
+})
